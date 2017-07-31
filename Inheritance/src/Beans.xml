@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="parentbean" class="com.learnerslife.HelloWorld">
+		<property name="message1" value="This is Parent Bean"></property>
+		<property name="message2" value="This is using HelloWorld"></property>
+	</bean>
+	<bean id="childbean" class="com.learnerslife.Subclass" parent="parentbean">
+	<!-- 		<property name="message1"
+			value="This is Parent Bean because child bean inherit it"></property>-->
+		<!--Inherit from parent -->
+		<property name="message2" value="This was override by child bean"></property><!-- Override -->
+		<property name="message3" value="This is child bean independent variable"></property><!-- New Property -->
+	</bean>
+</beans>

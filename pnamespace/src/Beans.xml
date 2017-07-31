@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="person1" class="com.learnerslife.Person" p:name="Ajay"
+		p:spouse-ref="person6" />
+	<bean id="person2" class="com.learnerslife.Person" p:name="Bijay"
+		p:spouse-ref="person5" />
+	<bean id="person3" class="com.learnerslife.Person" p:name="Cijay"
+		p:spouse-ref="person4" />
+	<bean id="person4" class="com.learnerslife.Person" p:name="Tina"
+		 />
+		 <!-- In this we dont set p:spouse="person3" becoz it will result in cycle - and final error->
+	<bean id="person5" class="com.learnerslife.Person" p:name="Mina"
+		 />
+	<bean id="person6" class="com.learnerslife.Person" p:name="Dika"
+		 />
+</beans>

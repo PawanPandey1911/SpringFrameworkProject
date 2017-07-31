@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- sending bean object using REF -->
+	<bean id="textedit1" class="com.learnerslife.Dependent" lazy-init="true"
+		scope="prototype">
+		<constructor-arg ref="spellchecker1" />
+		<constructor-arg ref="translator1" /><!-- sending bean 
+			using REF -->
+
+	</bean>
+	<!--sending bean object using INDEX -->
+	<bean id="textedit2" class="com.learnerslife.Dependent" lazy-init="true"
+		scope="prototype">
+		<constructor-arg index="0" ref="spellchecker1" /><!-- sending 
+			bean using REF -->
+		<constructor-arg index="1" ref="translator1" /><!-- sending 
+			bean using REF -->
+
+	</bean>
+	<!-- sending bean object using TYPE (This will give error) <bean id="textedit3" 
+		class="com.learnerslife.Dependent" lazy-init="true" scope="prototype"> <constructor-arg 
+		type="com.learnerslife.Dependent1" ref="spellchecker1" /> <constructor-arg 
+		type="com.learnerslife.Dependent2" ref="translator1" /> </bean> -->
+	<!-- Sending different type of values from dependency1(Integer) and dependency2(float) USING TYPE AND VALUE; No need to use REF-->
+	<bean id="textedit3" class="com.learnerslife.Dependent" lazy-init="true"
+		scope="prototype">
+		<constructor-arg type="int" value="10" />
+		<constructor-arg type="float" value="30.15" />
+
+	</bean>
+	<!-- Sending different type of values from dependency1(Integer) and dependency2(float) USING INDEX AND VALUE -->
+	<bean id="textedit4" class="com.learnerslife.Dependent" lazy-init="true"
+		scope="prototype">
+		<constructor-arg index="0" value="76" />
+		<constructor-arg index="1" value="20.15" />
+
+	</bean>
+	<!-- Sending different type of values from dependency1(Integer) and dependency2(float) USING VALUE ONLY-->
+	<bean id="textedit5" class="com.learnerslife.Dependent" lazy-init="true"
+		scope="prototype">
+		<constructor-arg  value="236" />
+		<constructor-arg  value="20.15" />
+
+	</bean>
+	<!-- Sending different type of values from dependency1(Integer) and dependency2(float) USING VALUE AND REF ONLY
+	THIS WILL GENERATE ERROR
+	<bean id="textedit6" class="com.learnerslife.Dependent" lazy-init="true"
+		scope="prototype">
+		<constructor-arg ref="spellchecker1" value="236" />
+		<constructor-arg ref="translator1" value="20.15" />
+
+	</bean>
+	-->
+	<bean id="spellchecker1" class="com.learnerslife.Dependency1">
+
+	</bean>
+	<bean id="translator1" class="com.learnerslife.Dependency2">
+
+	</bean>
+
+</beans>

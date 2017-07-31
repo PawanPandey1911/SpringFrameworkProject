@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="dependent" class="com.learnerslife.Dependent">
+		<property name="a" ref="dependency" />
+	</bean>
+	
+	<!-- We know that <bean class="XYZ"><property name="a" value="b"></bean> is used to set variable a=b in class XYZ-->
+	<!-- We also know that if we want to send object of bean to other bean we use REF attribute of <constructor-args> -->
+	<!-- Setter method of dependency injection use both above method -->
+	<!-- It uses <property name="variable" REF="dependencybeanid"> where <property> helps in setting   
+	using setter/getter method of variable i.e. getvariable()/setvariable(String variable); But insted of 
+	supplying values to SETTER() it send OBJECT REFERENCE using REF in <property>
+	-->
+	
+	<bean id="dependency" class="com.learnerslife.Dependency">
+
+	</bean>
+</beans>
